@@ -1,0 +1,25 @@
+# Compiled binaries
+bin/
+*.o
+*.out
+a.out
+*.exe
+*.dSYM/
+
+# CMake (in case anyone adds it later)
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Project-local
+.claude/
