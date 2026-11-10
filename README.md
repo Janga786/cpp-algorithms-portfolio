@@ -1,41 +1,8 @@
-<div align="center">
-
 # C++ Algorithms Portfolio
 
-**Six classical computer-science algorithms in clean, single-file, self-contained C++17: radix sort, union-find, topological sort, Kruskal's & Prim's MST, perfect-maze generation by Kruskal-style edge-knockdown, Huffman coding, and the optimal binary-search-tree DP.**
+Seven self-contained C++17 programs, written as coursework at Fort Lewis College: radix sort, union-find, topological sort, minimum spanning tree (Kruskal and Prim), perfect-maze generation, Huffman coding, and optimal binary-search-tree DP.
 
-[![C++17](https://img.shields.io/badge/C%2B%2B-17-3178c6.svg)](#)
-[![Build: GCC](https://img.shields.io/badge/build-g%2B%2B%20--std%3Dc%2B%2B17-orange.svg)](#)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-
-</div>
-
----
-
-## Contents
-
-- [Overview](#overview)
-- [The algorithms](#the-algorithms)
-- [Building & running](#building--running)
-- [Repository layout](#repository-layout)
-- [License](#license)
-
----
-
-## Overview
-
-Six standalone C++ algorithm implementations.  Each project folder
-compiles to a single binary with one `g++` invocation, runs in well
-under a second, and prints a small but illustrative demo of the
-algorithm on hand-picked input.
-
-The intent is to demonstrate fluency with the *building blocks* of
-algorithm design — disjoint-set forests, dynamic programming on
-intervals, greedy with a priority queue, induction-friendly graph
-traversal — rather than to build production data-structure libraries.
-Each implementation is small enough to read in five minutes.
-
----
+The seven source files sit in six folders (radix sort and union-find share a folder; Kruskal and Prim share one file). Each compiles with one `g++` command, runs in under a second, and prints a small demo on fixed input. They are teaching-scale implementations, not a library.
 
 ## The algorithms
 
@@ -43,13 +10,13 @@ Each implementation is small enough to read in five minutes.
 
 Two foundational data-structure exercises bundled together.
 
-**Radix sort** — `radix_sort.cpp` (~70 lines).  LSD (least-significant-
+**Radix sort** — `radix_sort.cpp` (80 lines).  LSD (least-significant-
 digit) radix sort over base-10 digits with stable counting sort as
 the per-digit subroutine.  Time **O(d · (n + k))** where *d* is the
 digit count of the largest value and *k = 10*.  Includes a 10 000-
 element random-sort sanity check.
 
-**Disjoint-set forest** — `disjoint_sets.cpp` (~80 lines).  Union-by-
+**Disjoint-set forest** — `disjoint_sets.cpp` (91 lines).  Union-by-
 rank + path compression DSU, with the rank stored as a *negative*
 value in the same vector that holds parent pointers (a classic
 storage trick: positive entries are parent indices, negative entries
@@ -64,7 +31,7 @@ prerequisite graph.  Builds the in-degree map, seeds a queue with all
 zero-in-degree nodes, peels them off one at a time while decrementing
 the in-degrees of their successors, and emits the result.
 
-The fixed input is a real engineering curriculum prerequisite graph,
+The fixed input is a computer-engineering course-prerequisite graph,
 so the output is an order in which the courses *can* actually be
 taken.  Time **O(V + E)**.
 
@@ -153,7 +120,7 @@ g++ -std=c++17 -O2 -Wall radix-sort-and-disjoint-sets/radix_sort.cpp -o radix_so
 A trivial helper to compile everything:
 
 ```bash
-for src in */**.cpp; do
+for src in */*.cpp; do
   out="bin/$(basename ${src%.cpp})"
   mkdir -p bin
   g++ -std=c++17 -O2 -Wall "$src" -o "$out"
@@ -193,4 +160,4 @@ cpp-algorithms-portfolio/
 
 ## License
 
-[MIT](LICENSE) — code is free for commercial, academic and educational use.
+[MIT](LICENSE)
